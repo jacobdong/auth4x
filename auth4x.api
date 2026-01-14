@@ -6,7 +6,49 @@ info (
 	author: "auth4x"
 )
 
+type SignUpReq {
+	Username string `json:"username"`
+	Password string `json:"password"`
+}
+
+type SignUpResp {
+	UserId string `json:"user_id"`
+}
+
+type SignInReq {
+	Username string `json:"username"`
+	Password string `json:"password"`
+}
+
+type TokenResp {
+	AccessToken  string `json:"access_token"`
+	RefreshToken string `json:"refresh_token"`
+	ExpiresIn    int64  `json:"expires_in"`
+	TokenType    string `json:"token_type"`
+}
+
+type TokenReq {
+	RefreshToken string `json:"refresh_token"`
+}
+
+type UserResp {
+	Id       string `json:"id"`
+	Username string `json:"username"`
+}
+
 service auth4x-api {
+	@handler SignUpHandler
+	post /api/auth/sign-up (SignUpReq) returns (SignUpResp)
+
+	@handler SignInHandler
+	post /api/auth/sign-in (SignInReq) returns (TokenResp)
+
+	@handler TokenHandler
+	post /api/auth/token (TokenReq) returns (TokenResp)
+
+	@handler UserMeHandler
+	get /api/users/me returns (UserResp)
+
 	@handler PingHandler
 	get /ping
 }
