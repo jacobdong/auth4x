@@ -1,0 +1,6 @@
+Name: auth4x-api
+Host: 0.0.0.0
+Port: 8888
+Auth:
+  JWTSecret: "replace-with-secure-secret"
+  AccessTokenExpireSeconds: 3600
