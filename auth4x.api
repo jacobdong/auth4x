@@ -1,0 +1,13 @@
+syntax = "v1"
+
+info (
+	title:  "auth4x"
+	desc:   "auth4x api"
+	author: "auth4x"
+)
+
+service auth4x-api {
+	@handler PingHandler
+	get /ping
+}
+
