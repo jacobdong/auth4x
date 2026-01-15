@@ -1,0 +1,43 @@
+syntax = "v1"
+
+import "auth4x_common.api"
+
+info (
+	title:  "auth4x"
+	desc:   "auth4x api"
+	author: "auth4x"
+)
+
+@server (
+	group: auth
+	tag:   "Auth"
+)
+service auth4x-api {
+	@handler SignUpHandler
+	post /api/auth/sign-up (SignUpReq) returns (SignUpResp)
+
+	@handler SignInHandler
+	post /api/auth/sign-in (SignInReq) returns (TokenResp)
+
+	@handler TokenHandler
+	post /api/auth/token (TokenReq) returns (TokenResp)
+}
+
+@server (
+	group: users
+	tag:   "Users"
+)
+service auth4x-api {
+	@handler UserMeHandler
+	get /api/users/me (UserMeReq) returns (UserResp)
+}
+
+@server (
+	group: health
+	tag:   "Health"
+)
+service auth4x-api {
+	@handler PingHandler
+	get /ping
+}
+

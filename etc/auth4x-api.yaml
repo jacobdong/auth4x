@@ -1,0 +1,8 @@
+Name: auth4x-api
+Host: 0.0.0.0
+Port: 8888
+Auth:
+  AccessSecret: "auth4x-access-secret"
+  AccessExpire: 3600
+  RefreshSecret: "auth4x-refresh-secret"
+  RefreshExpire: 2592000
