@@ -1,0 +1,40 @@
+syntax = "v1"
+
+info(
+  title: "auth4x common"
+  desc: "shared types for auth4x"
+)
+
+type SignUpReq {
+  Username string `json:"username"`
+  Password string `json:"password"`
+}
+
+type SignUpResp {
+  UserId string `json:"user_id"`
+}
+
+type SignInReq {
+  Username string `json:"username"`
+  Password string `json:"password"`
+}
+
+type TokenReq {
+  RefreshToken string `json:"refresh_token"`
+}
+
+type TokenResp {
+  AccessToken string `json:"access_token"`
+  RefreshToken string `json:"refresh_token"`
+  ExpiresIn int64 `json:"expires_in"`
+  TokenType string `json:"token_type"`
+}
+
+type UserResp {
+  Id string `json:"id"`
+  Username string `json:"username"`
+}
+
+type UserMeReq {
+  Authorization string `header:"Authorization"`
+}
